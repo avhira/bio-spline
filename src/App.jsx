@@ -1,30 +1,92 @@
+import './styles/main.scss';
+import Spline from '@splinetool/react-spline';
+import Logo from './images/my logo.png';
+import Instagram from './images/instagram.svg';
+import Facebook from './images/facebook.svg';
+import Linkedin from './images/linkedins.svg';
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [toggleMenu, setToggleMenu] = useState(true);
+
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + Avhira</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div className="App">
+      <Spline scene="https://prod.spline.design/KIHUKysh-BGuqpT0/scene.splinecode" />
+      <nav className={toggleMenu === true ? '' : 'active'}>
+        <div className="itemsContainer">
+          <div className="logo">
+            <img src={Logo} alt="logo" />
+          </div>
+          <div className="navList">
+            <ul>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/">About</a>
+              </li>
+              <li>
+                <a href="/">Projects</a>
+              </li>
+              <li>
+                <a href="/">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div className="burgerContainer">
+            <div
+              className="burgerTrigger"
+              onClick={() => {
+                handleToggleMenu();
+              }}
+            ></div>
+            <div className="burgerMenu"></div>
+          </div>
+        </div>
+      </nav>
+      <section>
+        <div className="itemsContainer">
+          <div className="contents">
+            <h1>
+              Let&apos;s build <span>something epic.</span>
+            </h1>
+            <p>Enhancing digital product experiences for businesses in Bali and Europe is our specialty. Click below to learn more about our software company.</p>
+          </div>
+          <div className="buttons">
+            <button className="one">Get started</button>
+            <button className="two">Our story</button>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div className="contents">
+          <ul>
+            <li>
+              <a href="#">
+                <img src={Instagram} alt="instagram" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src={Linkedin} alt="linkedin" />
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <img src={Facebook} alt="facebook" />
+              </a>
+            </li>
+          </ul>
+          <div className="creator">
+            <p>UI created by Avhira</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
 
